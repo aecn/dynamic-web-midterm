@@ -1,16 +1,16 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
-import Fruits from "./pages/FruitListing";
-import Fruit from "./pages/IndividualFruit";
+import Countries from "./pages/CountryListing";
+import Country from "./pages/IndividualCountry";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Fruits />,
+    element: <Countries />,
   },
   {
-    path: "/fruit/:id",
-    element: <Fruit />,
+    path: "/country/:id",
+    element: <Country />,
   },
 ]);
 
