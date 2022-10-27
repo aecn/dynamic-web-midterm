@@ -1,6 +1,6 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
-import Countries from "./pages/CountryListing";
+import Countries from "./pages/CountriesList";
 import Country from "./pages/IndividualCountry";
 
 const router = createBrowserRouter([
