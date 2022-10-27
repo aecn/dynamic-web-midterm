@@ -1,32 +1,62 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSearchParams } from "react-router";
-import CountryCard from "../components/CountryCard";
+import React, { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import ArtCard from "../components/ArtCard";
 import Header from "../components/Header";
 
-// individual country & it artworks
+// individual country & its artworks
 function Country() {
-    //const { name } = UseParams();
-    const [countryData, setCountryData] = useState({});
-    const [artData, setArtData] = useState({}); 
+    const [artData, setArtData] = useState([]); 
+    const [art, setArt] = useState("Picasso");
+
+    const URL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/437133`
 
     useEffect(() => {
         axios
-            .get(
-                `https://collectionapi.metmuseum.org/public/collection/v1/objects`
-                )
-            .then((response) => {
-                console.log({response});
+            .get(URL)
+            .then(function(response) {
+                console.log("response", response);
+                setArtData(response.data);
             })
-            .catch((error) => {
-                console.log({error});
+            .catch(function(error) {
+                console.log("error", error);
+                setArtData([]);
             });
     }, []);
 
-    return (
+    const {
+        artistDisplayName,
+        primaryImage,
+        objectDate,
+        objectName,
+        period,
+        title,
+    } = useMemo(() => {
+        return {
+            artistDisplayName: artData.name,
+            primaryImage: artData.primaryImage,
+            objectDate: artData.objectDate,
+            objectName: artData.objectName,
+            period: artData.period,
+            title: artData.title,
+        };
+    }, [artData]);
+
+    console.log("artData", artData);
+
+return (
         <div>
-            <h1>Individual Country</h1>
+            <h1>INDIVIDUAL COUNTRY</h1>
+            <Header />
+            <ArtCard
+            art={art}
+            artistDisplayName={artistDisplayName}
+            primaryImage={primaryImage}
+            objectDate={objectDate} 
+            objectName={objectName}
+            period={period} 
+            title={title}
+            />
         </div>
     );
 }

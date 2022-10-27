@@ -7,17 +7,15 @@ import Header from "../components/Header";
 // list of 5 countries
 function Countries() {
     const [countryData, setCountryData] = useState([]);
-    //const [country, setCountry] = useState("Italy");
-    //const [searchParams] = useSearchParams();
+    const [country, setCountry] = useState("Italy");
+    const [searchParams] = useSearchParams();
     const URL = "https://restcountries.com/v3.1/all";
 
     useEffect(() => {
-        //const countryToQuery = searchParams.get("country") || country;
-        //setCountry(countryToQuery);
+        const countryToQuery = searchParams.get("country") || country;
+        setCountry(countryToQuery);
         axios
-            .get(URL
-                //`https://restcountries.com/v3.1/all`
-            )
+            .get(URL)
             .then(function(response) {
                 console.log("response", response);
                 setCountryData(response.data);
@@ -30,25 +28,13 @@ function Countries() {
 
 console.log("countryData", countryData);
 
-
-    //const {
-        //continents,
-        //name,
-    //} = useMemo(() => {
-        //const countryMain = countryData || {};
-        //return { 
-            //name: countryData.name.common,
-            //continents: countryData.continents,
-    //};
-//}, []); //countryData inside
-
     return (
         <div>
-            <h1>COUNTRIES</h1>  
+            <h1>COUNTRIES</h1> 
+            <Header /> 
             {countryData.map((country, i) => (
                 <CountryCard country={country} key={i} />
             ))}
-                <Header />
         </div>
     );
 }
