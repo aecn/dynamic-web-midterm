@@ -1,0 +1,1 @@
+const ARTICLE_API_KEY = "2a17539f75eb49f394ad222bd7f47da7";

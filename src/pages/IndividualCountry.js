@@ -1,62 +1,46 @@
 import axios from "axios";
-import React, { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import ArtCard from "../components/ArtCard";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ArticleCard from "../components/ArticleCard";
 import Header from "../components/Header";
 
-// individual country & its artworks
+const COUNTRIES_URL = "https://restcountries.com/v3.1/all";
+const ARTICLES_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=2a17539f75eb49f394ad222bd7f47da7`;
+
 function Country() {
-    const [artData, setArtData] = useState([]); 
-    const [art, setArt] = useState("Picasso");
+    const { country } = useParams();
+    const [countryData, setCountryData] = useState([]);
+    const [articleData, setArticleData] = useState([]);
 
-    const URL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/437133`
+    console.log("articles", articleData);
 
+// first API
     useEffect(() => {
         axios
-            .get(URL)
+            .get(`https://restcountries.com/v3.1/all`)
             .then(function(response) {
                 console.log("response", response);
-                setArtData(response.data);
+                setCountryData(response.data);
             })
             .catch(function(error) {
                 console.log("error", error);
-                setArtData([]);
+                setCountryData([]);
             });
-    }, []);
+    }, [country]);
 
-    const {
-        artistDisplayName,
-        primaryImage,
-        objectDate,
-        objectName,
-        period,
-        title,
-    } = useMemo(() => {
-        return {
-            artistDisplayName: artData.name,
-            primaryImage: artData.primaryImage,
-            objectDate: artData.objectDate,
-            objectName: artData.objectName,
-            period: artData.period,
-            title: artData.title,
-        };
-    }, [artData]);
+// second API
+    useEffect(() => {
+        axios.get(`${ARTICLES_URL}`).then((response) => {
+            setArticleData(response.data)
+        }).catch((error) => {
+            setArticleData([])
+    })
+    }, [countryData]);
 
-    console.log("artData", artData);
-
-return (
+ return (
         <div>
-            <h1>INDIVIDUAL COUNTRY</h1>
             <Header />
-            <ArtCard
-            art={art}
-            artistDisplayName={artistDisplayName}
-            primaryImage={primaryImage}
-            objectDate={objectDate} 
-            objectName={objectName}
-            period={period} 
-            title={title}
-            />
+            <ArticleCard />
         </div>
     );
 }

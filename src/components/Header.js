@@ -2,11 +2,12 @@ import React from "react";
 
 function Header() {
     return (
-        <header>            
-            <a href="/country/CHINA">CHINA</a>
-            <a href="/country/EGYPT">EGYPT</a>
-            <a href="/country/GREECE">GREECE</a>
-            <a href="/country/ITALY">ITALY</a>
+        <header>
+            <a href="/country/france">France</a>
+            <a href="/country/japan">Japan</a>
+            <a href="/country/germany">Germany</a>
+            <a href="/country/russia">Russia</a>
+            <a href="/country/unitedstates">United States</a>       
         </header>
     )
 }

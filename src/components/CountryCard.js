@@ -3,11 +3,14 @@ import React from "react";
 function CountryCard ({
     country,
     name,
+    region,
 }) {
     return (
         <div className="CountryCard">
-            <h2>{country.name.common}</h2>
-            <h3>{country.region}</h3>
+            <h3>{country.name.common}</h3>
+            <p>{country.region}</p>
+            <p>{country.flag}</p>
+            <p></p>
         </div>
     );
 }
