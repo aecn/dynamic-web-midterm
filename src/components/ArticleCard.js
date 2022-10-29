@@ -2,12 +2,15 @@ import React from "react";
 
 function ArticleCard ({
     article,
+    description,
+    publishedAt,
     title,
-    content,
 }) {
     return (
         <div className="ArticleCard">
-            <h2>i want to die</h2>
+           <h3>{title}</h3>
+           <h4>{description}</h4>
+           <p>{publishedAt}</p>
         </div>
     );
 }

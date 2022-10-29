@@ -10,11 +10,15 @@ function Countries() {
     const [countryData, setCountryData] = useState([]);
     const [country, setCountry] = useState([]);
 
+    const [articleData, setArticleData] = useState([]);
+    const [article, setArticle] = useState([]);
+
     const COUNTRIES_URL = "https://restcountries.com/v3.1/all";
+    const ARTICLES_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=2a17539f75eb49f394ad222bd7f47da7`;
 
     useEffect(() => {
-        const countryToQuery = searchParams.get("country") || country;
-        setCountry(countryToQuery);
+        //const countryToQuery = searchParams.get("country") || country;
+        //setCountry(countryToQuery);
         axios
             .get(COUNTRIES_URL)
             .then(function(response) {
