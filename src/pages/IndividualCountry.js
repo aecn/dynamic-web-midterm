@@ -17,9 +17,6 @@ function Country() {
   const [countryData, setCountryData] = useState([]);
   const [articleData, setArticleData] = useState([]);
 
-  console.log("articles", articleData);
-  console.log("countries", countryData);
-
   // first API
   useEffect(() => {
     const countryToQuery = searchParams.get("country") || country;
