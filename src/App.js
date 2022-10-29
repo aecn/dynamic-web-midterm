@@ -1,5 +1,5 @@
-import './App.css';
-import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Countries from "./pages/CountriesList";
 import Country from "./pages/IndividualCountry";
 

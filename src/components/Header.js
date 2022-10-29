@@ -1,15 +1,14 @@
 import React from "react";
 
 function Header() {
-    return (
-        <header>
-            <a href="/country/france">France</a>
-            <a href="/country/japan">Japan</a>
-            <a href="/country/germany">Germany</a>
-            <a href="/country/russia">Russia</a>
-            <a href="/country/unitedstates">United States</a>       
-        </header>
-    )
+  return (
+    <header>
+      <a href="/country/sg">Singapore</a>
+      <a href="/country/jp">Japan</a>
+      <a href="/country/de">Germany</a>
+      <a href="/country/us">United States</a>
+    </header>
+  );
 }
 
 export default Header;

@@ -1,3 +1,50 @@
 .App {
+    background-color: #FFF;
+    color: #00072D;
+    font-family: 'geneva';
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border: 100px solid;
+}
 
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+}
+
+header a {
+    text-decoration: none;
+    color: #0A2472;
+}
+
+header a:hover {
+    color: #0E6BA8;
+}
+
+h1 {
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.ArticleCard {
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #0E6BA8;
+}
+
+.CountryCard {
+    text-align: center;
+    color: #0E6BA8;
 }
